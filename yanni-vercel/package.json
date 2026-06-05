@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Sistema Yanni Sushi",
   "engines": {
-    "node": "18.x"
+   "node": "20.x"
   }
 }
