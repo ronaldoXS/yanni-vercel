@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const FIREBASE_PROJECT = "yanni-sushi";
 const FIREBASE_API_KEY = "AIzaSyD-Qm_-JIMb5NSdow7RDAcd6PGZLDX0org";
 
@@ -33,6 +36,17 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   const pathname = req.url.split('?')[0];
+
+  if (req.method === 'GET' && (pathname === '/' || pathname === '/index.html' || pathname === '')) {
+    try {
+      const htmlPath = path.join(__dirname, '..', 'public', 'index.html');
+      const html = fs.readFileSync(htmlPath, 'utf8');
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(200).send(html);
+    } catch(e) {
+      return res.status(500).send('Erro ao carregar: ' + e.message);
+    }
+  }
 
   if (req.method === 'POST' && pathname === '/webhook') {
     try {
