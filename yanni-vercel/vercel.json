@@ -1,9 +1,5 @@
 {
-  "routes": [
-    { "src": "/webhook", "dest": "/api/routes" },
-    { "src": "/suki-painel", "dest": "/api/routes" },
-    { "src": "/suki", "dest": "/api/routes" },
-    { "src": "/status", "dest": "/api/routes" },
-    { "src": "/(.*)", "dest": "/public/$1" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/routes" }
   ]
 }
