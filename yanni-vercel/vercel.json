@@ -1,9 +1,8 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.js"
-    }
+  "rewrites": [
+    { "source": "/webhook", "destination": "/api/routes" },
+    { "source": "/suki-painel", "destination": "/api/routes" },
+    { "source": "/suki", "destination": "/api/routes" },
+    { "source": "/status", "destination": "/api/routes" }
   ]
 }
